@@ -1,0 +1,7 @@
+
+;; Function int add(int, int) (null)
+;; enabled by -tree-original
+
+
+return <retval> = a + b;
+

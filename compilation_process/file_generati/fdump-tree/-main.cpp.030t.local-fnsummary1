@@ -1,0 +1,35 @@
+
+;; Function main (main, funcdef_no=1988, decl_uid=49712, cgraph_uid=456, symbol_order=493)
+
+
+Analyzing function body size: int main()/493
+
+IPA function summary for int main()/493
+  global time:     14.000000
+  self size:       6
+  global size:     0
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:1.000000, time:2.000000
+    size:2.000000, time:0.000000,  executed if:(not inlined)
+  calls:
+    int add(int, int)/1151 function body not available
+      freq:1.00 loop depth: 0 size: 3 time: 12
+
+int main ()
+{
+  int D.53798;
+  int _3;
+
+  <bb 2> :
+  add (1, 2);
+  _3 = 0;
+
+  <bb 3> :
+<L0>:
+  return _3;
+
+}
+
+

@@ -1,0 +1,17 @@
+
+;; Function add (_Z3addii, funcdef_no=0, decl_uid=2763, cgraph_uid=1, symbol_order=0)
+
+int add (int a, int b)
+{
+  int D.2765;
+
+  <bb 2> :
+  D.2765 = a + b;
+
+  <bb 3> :
+<L0>:
+  return D.2765;
+
+}
+
+

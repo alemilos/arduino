@@ -1,0 +1,32 @@
+
+;; Function add (_Z3addii, funcdef_no=0, decl_uid=2763, cgraph_uid=1, symbol_order=0)
+
+
+Analyzing function body size: int add(int, int)/0
+
+IPA function summary for int add(int, int)/0
+  global time:     3.000000
+  self size:       4
+  global size:     4
+  min size:       0
+  self stack:      0
+  global stack:    0
+    size:2.000000, time:3.000000
+    size:2.000000, time:0.000000,  executed if:(not inlined)
+  calls:
+
+int add (int a, int b)
+{
+  int D.2765;
+  int _3;
+
+  <bb 2> :
+  _3 = a_1(D) + b_2(D);
+
+  <bb 3> :
+<L0>:
+  return _3;
+
+}
+
+

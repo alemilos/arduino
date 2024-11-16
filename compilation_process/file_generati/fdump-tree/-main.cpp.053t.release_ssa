@@ -1,0 +1,20 @@
+
+;; Function main (main, funcdef_no=1988, decl_uid=49712, cgraph_uid=456, symbol_order=493)
+
+Released 0 names, 0.00%, removed 0 holes
+int main ()
+{
+  int D.53798;
+  int _3;
+
+  <bb 2> :
+  add (1, 2);
+  _3 = 0;
+
+  <bb 3> :
+<L0>:
+  return _3;
+
+}
+
+

@@ -1,0 +1,27 @@
+
+;; Function main (main, funcdef_no=1988, decl_uid=49712, cgraph_uid=456, symbol_order=493)
+
+;; 1 loops found
+;;
+;; Loop 0
+;;  header 0, latch 1
+;;  depth 0, outer -1
+;;  nodes: 0 1 2 3
+;; 2 succs { 3 }
+;; 3 succs { 1 }
+int main ()
+{
+  int D.53798;
+  int _3;
+
+  <bb 2> :
+  add (1, 2);
+  _3 = 0;
+
+  <bb 3> :
+<L0>:
+  return _3;
+
+}
+
+
