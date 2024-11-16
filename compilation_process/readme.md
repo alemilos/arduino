@@ -1,3 +1,5 @@
+![alt text](https://github.com/alemilos/arduino/blob/main/compilation_process/compilation-process.png?raw=true)
+
 ### Per prima cosa
 
 Creiamo tre files 
