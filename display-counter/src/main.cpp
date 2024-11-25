@@ -9,7 +9,7 @@ int count = 0;
 
 void writeToScreen();
 
-const int rs = 12, enable = 11, d4 = 3, d5 = 4, d6 = 5, d7 = 6;
+const int rs = 12, enable = 11, d4 = 2, d5 = 3, d6 = 4, d7 = 5;
 LiquidCrystal lcd(rs, enable, d4, d5, d6, d7);
 
 const int buttonPins[PINS] = { 8,2 ,7};
@@ -79,7 +79,7 @@ void debounce_buttons()
 
 void loop()
 {
-    debounce_buttons();
+    // debounce_buttons();
      lcd.setCursor(0,1);
     lcd.print(millis());
 }
