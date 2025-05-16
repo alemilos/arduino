@@ -6,7 +6,7 @@
  * - 7  --> Speed
  * - 8  --> Super Capacitors Ampere
  * - 9  --> Clacson
- * - 10 --> Passenger Compartment Temperature
+ * - 10 --> Case Temperature
  * - 11 --> Fuel Cell Voltage
  * - 12 --> Motor Ampere
  * - 13 --> Go Back Button
