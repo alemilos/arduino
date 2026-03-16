@@ -53,20 +53,6 @@ static constexpr uint16_t SPD_VAL_Y        = 55;
 static constexpr uint16_t SPD_CLEAR_W      = 220;
 static constexpr uint16_t SPD_CLEAR_H      = 90;
 
-// RPM zone (right)
-static constexpr uint16_t RPM_X            = 250;
-static constexpr uint16_t RPM_Y            = 20;
-static constexpr uint16_t RPM_VAL_X        = 250;
-static constexpr uint16_t RPM_VAL_Y        = 55;
-static constexpr uint16_t RPM_CLEAR_W      = 220;
-static constexpr uint16_t RPM_CLEAR_H      = 90;
-
-// RPM bar
-static constexpr uint16_t RPM_BAR_X        = 250;
-static constexpr uint16_t RPM_BAR_Y        = 130;
-static constexpr uint16_t RPM_BAR_W        = 220;
-static constexpr uint16_t RPM_BAR_H        = 18;
-
 // Middle row values
 static constexpr uint16_t VOLT_VAL_X       = 10;
 static constexpr uint16_t VOLT_VAL_Y       = 195;
@@ -77,7 +63,7 @@ static constexpr uint16_t EFF_VAL_Y        = 195;
 static constexpr uint16_t MID_CLEAR_W      = 140;
 static constexpr uint16_t MID_CLEAR_H      = 35;
 
-// ── Seriale ──────────────────────────────────────────────
+// ── Serial ──────────────────────────────────────────────
 static constexpr uint32_t SERIAL_BAUD_DEBUG = 115200;
 static constexpr uint32_t SERIAL_BAUD_ECU   = 9600;
 static constexpr uint8_t  SERIAL_FRAME_SOF  = 0xAA;

@@ -7,10 +7,10 @@
 
 struct VehicleData {
     uint8_t  speedKmh;         // 0–50 kmh
-    uint16_t rpmEngine;        // 0–65535 rpm
+    // uint16_t rpmEngine;        // 0–65535 rpm
     uint32_t odometryM;        // odometria in metri (non cm: overflow più tardi)
 
-    float    batteryVoltage;   // es. 12.4V
+    float    fuelCellVoltage;   // es. 12.4V
     float    currentAmps;      // corrente istantanea
     float    consumedMah;      // energia consumata sessione
 
@@ -23,9 +23,9 @@ struct VehicleData {
 
     void reset() {
         speedKmh        = 0;
-        rpmEngine       = 0;
+        // rpmEngine       = 0;
         odometryM       = 0;
-        batteryVoltage  = 0.0f;
+        fuelCellVoltage  = 0.0f;
         currentAmps     = 0.0f;
         consumedMah     = 0.0f;
         efficiencyKmKwh = 0.0f;

@@ -36,18 +36,18 @@ static void taskDisplay()  { displayMgr.update(dataSource->getData()); }
 // }
 
 void setup() {
-    // Serial.begin(SERIAL_BAUD_DEBUG);
-    // Serial1.begin(SERIAL_BAUD_ECU);
+    Serial.begin(SERIAL_BAUD_DEBUG);
+    Serial1.begin(SERIAL_BAUD_ECU);
 
-    // displayMgr.begin();
+    displayMgr.begin();
 
-    // scheduler.addTask(taskSensors,   TASK_PERIOD_SENSORS_MS);
+    scheduler.addTask(taskSensors,   TASK_PERIOD_SENSORS_MS);
     // scheduler.addTask(taskInput,     TASK_PERIOD_INPUT_MS);
-    // scheduler.addTask(taskDisplay,   TASK_PERIOD_DISPLAY_MS);
+    scheduler.addTask(taskDisplay,   TASK_PERIOD_DISPLAY_MS);
     // scheduler.addTask(taskLogic,     TASK_PERIOD_INPUT_MS);
     // scheduler.addTask(taskSerialLog, TASK_PERIOD_SERIAL_LOG_MS);
 }
 
 void loop() {
-    // scheduler.tick(millis());
+    scheduler.tick(millis());
 }
