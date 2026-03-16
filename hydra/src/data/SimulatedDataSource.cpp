@@ -1,4 +1,5 @@
 #include "SimulatedDataSource.h"
+#include <cmath>
 
 SimulatedDataSource::SimulatedDataSource()
     : _lastUpdateMs(0), _simPhase(0), _phaseCounter(0)
@@ -23,20 +24,35 @@ void SimulatedDataSource::update(uint32_t nowMs) {
 void SimulatedDataSource::_advanceSimulation(uint32_t dtMs) {
     _phaseCounter += dtMs;
 
-    // Fase 0: accelerazione (primi 5 secondi)
+    // Pseudo-random number generator (deterministic based on counter)
+    auto pseudoRandom = [](uint32_t seed) -> float {
+        uint32_t x = seed ^ (seed << 13);
+        x = x ^ (x >> 17);
+        x = x ^ (x << 5);
+        return (float)(x % 100) / 100.0f;
+    };
+
+    // Fase 0: accelerazione con variazioni (primi 10 secondi)
     if (_simPhase == 0) {
-        _data.speedKmh  = (uint8_t)(_data.speedKmh + 1 > 30 ? 30 : _data.speedKmh + 1);
-        if (_phaseCounter >= 5000) { _simPhase = 1; _phaseCounter = 0; }
+        // Variable acceleration: base 0.8-1.2 km/h per cycle
+        float accelVariation = 0.8f + pseudoRandom(_phaseCounter) * 0.4f;
+        _data.speedKmh = (uint8_t)(_data.speedKmh + accelVariation > 50 ? 50 : _data.speedKmh + accelVariation);
+        if (_phaseCounter >= 6000) { _simPhase = 1; _phaseCounter = 0; }
     }
-    // Fase 1: crociera (10 secondi)
+    // Fase 1: crociera con variazioni di velocità (20 secondi)
     else if (_simPhase == 1) {
-        _data.speedKmh  = 30;
-        if (_phaseCounter >= 10000) { _simPhase = 2; _phaseCounter = 0; }
+        // Simulate realistic cruise: speed varies around 35-45 km/h with a wave pattern
+        float wavePhase = (_phaseCounter / 20000.0f) * 6.28f; // 0 to 2π
+        float waveDelta = sin(wavePhase) * 5.0f; // ±5 km/h variation
+        float baseSpeed = 40.0f;
+        _data.speedKmh = (uint8_t)(baseSpeed + waveDelta + pseudoRandom(_phaseCounter) * 2.0f);
+
+        if (_phaseCounter >= 15000) { _simPhase = 2; _phaseCounter = 0; }
     }
-    // Fase 2: decelerazione (3 secondi)
+    // Fase 2: decelerazione (8 secondi)
     else {
-        _data.speedKmh  = (uint8_t)(_data.speedKmh > 0 ? _data.speedKmh - 1 : 0);
-        if (_phaseCounter >= 3000) { _simPhase = 0; _phaseCounter = 0; }
+        _data.speedKmh = (uint8_t)(_data.speedKmh > 0 ? _data.speedKmh - 1 : 0);
+        if (_phaseCounter >= 8000) { _simPhase = 0; _phaseCounter = 0; }
     }
 
     // Aggiorna dati derivati
