@@ -59,6 +59,14 @@ void SimulatedDataSource::_advanceSimulation(uint32_t dtMs) {
     _data.fuelCellVoltage = 12.6f - (_data.consumedMah / 10000.0f);
     _data.currentAmps    = _data.engineRunning ? 2.5f + _data.speedKmh * 0.05f : 0.1f;
 
+    // Simulate fuel cell temperature (heats up with current, cools down slowly)
+    float targetTemp = 35.0f + (_data.currentAmps * 8.0f);  // hotter with more current
+    _data.fuelCellTemperature += (targetTemp - _data.fuelCellTemperature) * 0.05f;
+
+    // Simulate cabin temperature (baseline 22°C, increases with activity)
+    float cabinHeatGeneration = _data.speedKmh * 0.15f;
+    _data.cabinTemperatureC += (22.0f + cabinHeatGeneration - _data.cabinTemperatureC) * 0.02f;
+
     float dtH = dtMs / 3600000.0f;
     _data.consumedMah   += _data.currentAmps * 1000.0f * dtH;
     _data.odometryM     += (uint32_t)(_data.speedKmh * dtMs / 3600);

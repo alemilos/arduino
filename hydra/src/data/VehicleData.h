@@ -11,24 +11,28 @@ struct VehicleData {
     uint32_t odometryM;        // odometria in metri (non cm: overflow più tardi)
 
     float    fuelCellVoltage;   // es. 12.4V
+    float    fuelCellTemperature; // °C
     float    currentAmps;      // corrente istantanea
     float    consumedMah;      // energia consumata sessione
 
     float    efficiencyKmKwh;  // km/kWh calcolato
+    float    cabinTemperatureC; // °C
 
     // System state
     bool     engineRunning;
-    bool     dataValid;        // false if source doesn't respond 
-    uint32_t lastUpdateMs;     // timestamp last write 
+    bool     dataValid;        // false if source doesn't respond
+    uint32_t lastUpdateMs;     // timestamp last write
 
     void reset() {
         speedKmh        = 0;
         // rpmEngine       = 0;
         odometryM       = 0;
         fuelCellVoltage  = 0.0f;
+        fuelCellTemperature = 0.0f;
         currentAmps     = 0.0f;
         consumedMah     = 0.0f;
         efficiencyKmKwh = 0.0f;
+        cabinTemperatureC = 0.0f;
         engineRunning   = false;
         dataValid       = false;
         lastUpdateMs    = 0;
