@@ -3,13 +3,12 @@
 #include "./IScreen.h"
 #include "../../config/Config.h"
 #include "../../data/VehicleData.h"
+#include "../../config/DisplayConfig.h" 
 
-
-#include <Adafruit_ILI9341.h>
 
 class DashboardScreen : public IScreen {
 public:
-    explicit DashboardScreen(Adafruit_ILI9341& tft);
+    explicit DashboardScreen(TFTDriver& tft);
 
     void drawFull(const VehicleData& data) override;
     void update  (const VehicleData& data) override;
@@ -19,7 +18,7 @@ public:
     const char* getName() const override { return "DASHBOARD"; }
 
 private:
-    Adafruit_ILI9341& _tft;
+    TFTDriver& _tft; 
 
     // Shadow values 
     uint8_t  _prevSpeed;

@@ -16,7 +16,9 @@ static InputManager   inputMgr;
 static Scheduler<6>   scheduler;
 
 static void taskSensors()  { dataSource->update(millis()); }
-static void taskInput()    { inputMgr.update(millis()); }
+#ifndef __AVR__
+static void taskInput() { inputMgr.update(millis()); }
+#endif
 static void taskDisplay()  { displayMgr.update(dataSource->getData()); }
 
 // static void taskLogic() {
@@ -37,7 +39,10 @@ static void taskDisplay()  { displayMgr.update(dataSource->getData()); }
 
 void setup() {
     Serial.begin(SERIAL_BAUD_DEBUG);
-    Serial1.begin(SERIAL_BAUD_ECU);
+
+    #ifndef __AVR__
+        Serial1.begin(SERIAL_BAUD_ECU);   // not available on Uno
+    #endif
 
     displayMgr.begin();
 

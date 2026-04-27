@@ -1,7 +1,8 @@
 #include "../screens/DashboardScreen.h"
+#include "../../config/DisplayConfig.h"
 #include <Arduino.h>
 
-DashboardScreen::DashboardScreen(Adafruit_ILI9341& tft)
+DashboardScreen::DashboardScreen(TFTDriver& tft)
     : _tft(tft),
       _prevSpeed(0xFF),
       _prevFuelCellVoltage(-1.0f),

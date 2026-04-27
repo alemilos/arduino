@@ -1,5 +1,9 @@
 #include "SimulatedDataSource.h"
-#include <cmath>
+#ifdef __AVR__
+    #include <math.h>   // AVR libc
+#else
+    #include <cmath>    // everyone else
+#endif
 
 SimulatedDataSource::SimulatedDataSource()
     : _lastUpdateMs(0), _simPhase(0), _phaseCounter(0)
