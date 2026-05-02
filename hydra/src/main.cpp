@@ -2,23 +2,22 @@
 #include "config/Config.h"
 #include "data/SimulatedDataSource.h"
 #include "display/DisplayManager.h"
-#include "input/InputManager.h"
 #include "scheduler/Scheduler.h"
 
 
-// ── Global Objects (static storage, no heap) ────────
+// // ── Global Objects (static storage, no heap) ────────
 static SimulatedDataSource simSource;
 // static RealDataSource      realSource(Serial1); // enable if real data is reachable
 static IDataSource*        dataSource = &simSource;  // swap here to &realSource when available 
 
 static DisplayManager displayMgr;
-static InputManager   inputMgr;
+// static InputManager   inputMgr;
 static Scheduler<6>   scheduler;
 
 static void taskSensors()  { dataSource->update(millis()); }
-#ifndef __AVR__
-static void taskInput() { inputMgr.update(millis()); }
-#endif
+// #ifndef __AVR__
+// static void taskInput() { inputMgr.update(millis()); }
+// #endif
 static void taskDisplay()  { displayMgr.update(dataSource->getData()); }
 
 // static void taskLogic() {
